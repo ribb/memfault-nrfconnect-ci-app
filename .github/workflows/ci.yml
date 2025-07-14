@@ -95,8 +95,8 @@ jobs:
           cd zephyr-workspace
           ccache -z
           west build \
-              --board nrf7002dk/nrf5340/cpuapp \
-              --pristine=always nrfconnect-ci-app \
+              -b nrf7002dk\nrf5340\cpuapp \
+              -p=always nrfconnect-ci-app \
               -- \
               -DCONFIG_MEMFAULT_NCS_PROJECT_KEY=\"1234\"
           ccache -sv
