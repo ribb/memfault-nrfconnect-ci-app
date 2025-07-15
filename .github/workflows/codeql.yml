@@ -101,18 +101,18 @@ jobs:
 
         # 假設 NCS_PATH 是你 SDK 的根目錄
         # 假設 nrf_desktop 應用程式位於 SDK 根目錄下的 'nrf/applications/nrf_desktop'
-        APP_DIR="${GITHUB_WORKSPACE}/zephyr-workspace/nrf/applications/nrf_desktop"
+        # APP_DIR="${GITHUB_WORKSPACE}/zephyr-workspace/nrf/applications/nrf_desktop"
 
-        if [ ! -d "$APP_DIR" ]; then
-          echo "Error: nrf_desktop application directory not found at $APP_DIR. Please adjust APP_DIR variable."
-          ls -R "${GITHUB_WORKSPACE}/zephyr-workspace"
-          exit 1
-        fi
+        # if [ ! -d "$APP_DIR" ]; then
+        #  echo "Error: nrf_desktop application directory not found at $APP_DIR. Please adjust APP_DIR variable."
+        #  ls -R "${GITHUB_WORKSPACE}/zephyr-workspace"
+        #  exit 1
+        # fi
 
-        cd "$APP_DIR" # <-- 進入應用程式目錄
+        # cd "$APP_DIR" # <-- 進入應用程式目錄
 
         # 執行 west build 命令，CodeQL 會在此時監控編譯過程
-        west build -b nrf54l15dk/nrf54l15/cpuapp -p=always nrf/applications/nrf_desktop/ --build-dir build_codeql
+        west build -b nrf54l15dk/nrf54l15/cpuapp -p=always --build-dir build_codeql
         echo "nrf_desktop build for CodeQL complete."
 #        echo 'If you are using a "manual" build mode for one or more of the' \
 #          'languages you are analyzing, replace this with the commands to build' \
