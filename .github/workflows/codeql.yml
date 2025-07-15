@@ -86,6 +86,15 @@ jobs:
       shell: bash
       run: |
         echo "Building nrf_desktop application for CodeQL..."
+        echo "Listing contents of GITHUB_WORKSPACE:"
+        ls -la "${GITHUB_WORKSPACE}"
+        echo "Listing contents of GITHUB_WORKSPACE/zephyr-workspace:"
+        ls -la "${GITHUB_WORKSPACE}/zephyr-workspace"
+        echo "Listing contents of GITHUB_WORKSPACE/zephyr-workspace/nrf:"
+        ls -la "${GITHUB_WORKSPACE}/zephyr-workspace/nrf"
+        echo "Listing contents of GITHUB_WORKSPACE/zephyr-workspace/nrf/applications:"
+        ls -la "${GITHUB_WORKSPACE}/zephyr-workspace/nrf/applications"
+        
         # 確保這裡的命令能夠成功編譯你的 nrf_desktop 專案
         # 這通常需要先 cd 到 NCS SDK 的根目錄 (由 NCS_PATH 環境變數提供)
         # 然後再 cd 到你的 nrf_desktop 應用程式目錄
