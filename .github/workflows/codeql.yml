@@ -105,7 +105,7 @@ jobs:
         cd "$APP_DIR"
 
         # 執行 west build 命令，CodeQL 會在此時監控編譯過程
-        west build -b nrf54l15dk/nrf54l15/cpuapp -p=always --build-dir build_codeql
+        west build -b nrf54l15dk/nrf54l15/cpuapp -p=always nrf/applications/nrf_desktop/ --build-dir build_codeql
         echo "nrf_desktop build for CodeQL complete."
 #        echo 'If you are using a "manual" build mode for one or more of the' \
 #          'languages you are analyzing, replace this with the commands to build' \
