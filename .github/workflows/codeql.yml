@@ -93,7 +93,7 @@ jobs:
         # 假設 NCS_PATH 是你 SDK 的根目錄
         # 假設 nrf_desktop 應用程式位於 SDK 根目錄下的 'nrf/applications/nrf_desktop'
         #-- Found partition manager static configuration : /home/runner/work/memfault-nrfconnect-ci-app/memfault-nrfconnect-ci-app/zephyr-workspace/nrf/applications/nrf_desktop/configuration/nrf54l15dk_nrf54l15_cpuapp/pm_static.yml
-        NCS_PATH="memfault-nrfconnect-ci-app/memfault-nrfconnect-ci-app/zephyr-workspace"
+        NCS_PATH="memfault-nrfconnect-ci-app/zephyr-workspace"
         APP_DIR="${NCS_PATH}/nrf/applications/nrf_desktop" # <-- 請根據你專案實際路徑修改
 
         if [ ! -d "$APP_DIR" ]; then
