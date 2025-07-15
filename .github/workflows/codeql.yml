@@ -85,12 +85,31 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        echo 'If you are using a "manual" build mode for one or more of the' \
-          'languages you are analyzing, replace this with the commands to build' \
-          'your code, for example:'
-        echo '  make bootstrap'
-        echo '  make release'
-        exit 1
+        echo "Building nrf_desktop application for CodeQL..."
+        # 確保這裡的命令能夠成功編譯你的 nrf_desktop 專案
+        # 這通常需要先 cd 到 NCS SDK 的根目錄 (由 NCS_PATH 環境變數提供)
+        # 然後再 cd 到你的 nrf_desktop 應用程式目錄
+
+        # 假設 NCS_PATH 是你 SDK 的根目錄
+        # 假設 nrf_desktop 應用程式位於 SDK 根目錄下的 'nrf/applications/nrf_desktop'
+        APP_DIR="${NCS_PATH}/nrf/applications/nrf_desktop" # <-- 請根據你專案實際路徑修改
+
+        if [ ! -d "$APP_DIR" ]; then
+          echo "Error: nrf_desktop application directory not found at $APP_DIR. Please adjust APP_DIR variable."
+          exit 1
+        fi
+
+        cd "$APP_DIR"
+
+        # 執行 west build 命令，CodeQL 會在此時監控編譯過程
+        west build -b nrf52840dk_nrf52840 --pristine auto --build-dir build_codeql
+        echo "nrf_desktop build for CodeQL complete."
+#        echo 'If you are using a "manual" build mode for one or more of the' \
+#          'languages you are analyzing, replace this with the commands to build' \
+#          'your code, for example:'
+#        echo '  make bootstrap'
+#        echo '  make release'
+#        exit 1
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
