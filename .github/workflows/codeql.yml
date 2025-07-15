@@ -94,6 +94,14 @@ jobs:
         #ls -la "${GITHUB_WORKSPACE}/zephyr-workspace/nrf"
         #echo "Listing contents of GITHUB_WORKSPACE/zephyr-workspace/nrf/applications:"
         #ls -la "${GITHUB_WORKSPACE}/zephyr-workspace/nrf/applications"
+
+        echo "Current PATH before west build:"
+        echo "$PATH"
+        # --- 調試訊息：嘗試執行 west 並顯示其位置 ---
+        echo "Attempting to find west command:"
+        which west || echo "west command not found in PATH"
+        west --version || echo "west --version failed"
+        # --- 調試訊息結束 ---
         
         # 確保這裡的命令能夠成功編譯你的 nrf_desktop 專案
         # 這通常需要先 cd 到 NCS SDK 的根目錄 (由 NCS_PATH 環境變數提供)
