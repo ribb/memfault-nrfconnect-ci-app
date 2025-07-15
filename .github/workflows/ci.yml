@@ -105,7 +105,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: zephyr-workspace/build/zephyr/zephyr.elf
+          path: zephyr-workspace/build/nrf_desktop/zephyr/zephyr.elf
 
   zephyr-docker-image:
     runs-on: ubuntu-latest
@@ -144,8 +144,8 @@ jobs:
           cd zephyr-workspace
           ccache -z
           west build \
-              --board nrf7002dk/nrf5340/cpuapp \
-              --pristine=always nrfconnect-ci-app \
+              -b nrf54l15dk/nrf54l15/cpuapp \
+              -p=always nrf/applications/nrf_desktop/ \
               -- \
               -DCONFIG_MEMFAULT_NCS_PROJECT_KEY=\"1234\"
           ccache -sv
@@ -202,8 +202,8 @@ jobs:
           cd -
 
           west build \
-              --board nrf7002dk/nrf5340/cpuapp \
-              --pristine=always nrfconnect-ci-app \
+              -b nrf54l15dk/nrf54l15/cpuapp \
+              -p=always nrf/applications/nrf_desktop/ \
               -- \
               -DCONFIG_MEMFAULT_NCS_PROJECT_KEY=\"${{ secrets.MEMFAULT_PROJECT_KEY }}\" \
               -DCONFIG_MEMFAULT_NCS_FW_VERSION_STATIC=y \
