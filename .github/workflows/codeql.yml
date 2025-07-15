@@ -93,16 +93,16 @@ jobs:
         # 假設 NCS_PATH 是你 SDK 的根目錄
         # 假設 nrf_desktop 應用程式位於 SDK 根目錄下的 'nrf/applications/nrf_desktop'
         #-- Found partition manager static configuration : /home/runner/work/memfault-nrfconnect-ci-app/memfault-nrfconnect-ci-app/zephyr-workspace/nrf/applications/nrf_desktop/configuration/nrf54l15dk_nrf54l15_cpuapp/pm_static.yml
-        NCS_PATH="zephyr-workspace"
-        APP_DIR="${NCS_PATH}/nrf/applications/nrf_desktop" # <-- 請根據你專案實際路徑修改
+        # NCS_PATH="zephyr-workspace"
+        # APP_DIR="${NCS_PATH}/nrf/applications/nrf_desktop" # <-- 請根據你專案實際路徑修改
 
-        if [ ! -d "$APP_DIR" ]; then
-          pwd
-          echo "Error: nrf_desktop application directory not found at $APP_DIR. Please adjust APP_DIR variable."
-          exit 1
-        fi
+        # if [ ! -d "$APP_DIR" ]; then
+        #  echo "Error: nrf_desktop application directory not found at $APP_DIR. Please adjust APP_DIR variable."
+        #  exit 1
+        # fi
 
-        cd "$NCS_PATH"
+        # cd "$NCS_PATH"
+        cd zephyr-workspace
 
         # 執行 west build 命令，CodeQL 會在此時監控編譯過程
         west build -b nrf54l15dk/nrf54l15/cpuapp -p=always nrf/applications/nrf_desktop/ --build-dir build_codeql
