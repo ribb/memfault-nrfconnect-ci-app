@@ -1,13 +1,20 @@
 #
-# Copyright (c) 2021 Nordic Semiconductor ASA
+# Copyright (c) 2018 Nordic Semiconductor ASA
 #
 # SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
 #
 
+menu "nRF52 Desktop"
+rsource "Kconfig.hid"
+rsource "Kconfig.ble"
+rsource "Kconfig.debug"
+rsource "src/events/Kconfig"
+rsource "src/hw_interface/Kconfig"
+rsource "src/modules/Kconfig"
+rsource "src/util/Kconfig"
+rsource "Kconfig.defaults"
+endmenu
+
 menu "Zephyr Kernel"
 source "Kconfig.zephyr"
 endmenu
-
-module = MEMFAULT_SAMPLE
-module-str = Memfault sample
-source "${ZEPHYR_BASE}/subsys/logging/Kconfig.template.log_config"
