@@ -102,7 +102,7 @@ jobs:
           exit 1
         fi
 
-        cd "$APP_DIR"
+        cd "$NCS_PATH"
 
         # 執行 west build 命令，CodeQL 會在此時監控編譯過程
         west build -b nrf54l15dk/nrf54l15/cpuapp -p=always nrf/applications/nrf_desktop/ --build-dir build_codeql
