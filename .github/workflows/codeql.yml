@@ -110,6 +110,7 @@ jobs:
         # fi
 
         # cd "$APP_DIR" # <-- 進入應用程式目錄
+        cd ${GITHUB_WORKSPACE}
 
         # 執行 west build 命令，CodeQL 會在此時監控編譯過程
         west build -b nrf54l15dk/nrf54l15/cpuapp -p=always --build-dir build_codeql
